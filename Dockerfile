@@ -19,9 +19,8 @@ RUN  yum install -y \
         #  Tools
         less \
         libcurl \
-        net-tools \
+        net-tools && \
      yum install -y --enablerepo=nginx \
-        # nginx
         nginx && \
      yum install -y --enablerepo=remi-php54 \
         # php
@@ -41,7 +40,6 @@ RUN  yum install -y \
      yum clean all
 
 # nginx
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/vhost-phpfpm.conf /etc/nginx/conf.d/vhost-phpfpm.conf
 
 # php

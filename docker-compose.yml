@@ -8,9 +8,11 @@ services:
       - ./logs/unitd:/var/log/unitd.log
   unit:
     container_name: 'unit'
-    #image: oshou/docker-centos7-unit:latest
+    #image: oshou/docker-centos7-phpfpm-php54:latest
     build: .
+    privileged: true
     volumes_from:
       - data-volume
     ports:
-      - 8300:8300
+      - 80:80
+      - 9000:9000
