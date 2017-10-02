@@ -1,0 +1,16 @@
+version: '2'
+services:
+  data-volume:
+    container_name: 'data-volume'
+    image: busybox
+    volumes: 
+      - ./data/www:/var/www
+      - ./logs/unitd:/var/log/unitd.log
+  unit:
+    container_name: 'unit'
+    #image: oshou/docker-centos7-unit:latest
+    build: .
+    volumes_from:
+      - data-volume
+    ports:
+      - 8300:8300
