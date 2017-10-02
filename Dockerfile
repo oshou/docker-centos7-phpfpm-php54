@@ -9,6 +9,7 @@ RUN sed -i -e "s/LANG=\"en_US.UTF-8\"/LANG=\"ja_JP.UTF-8\"/g" /etc/locale.conf &
 RUN  yum -y update
 
 # install repository
+COPY conf/unit.repo /etc/yum.repos.d/unit.repo
 COPY conf/nginx.repo /etc/yum.repos.d/nginx.repo
 RUN  yum install -y epel-release && \
      rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/city-fan.org-release-1-13.rhel7.noarch.rpm && \
@@ -16,11 +17,12 @@ RUN  yum install -y epel-release && \
 
 # install packages
 RUN  yum install -y \
-        #  Tools
+        # tools
         less \
         libcurl \
         net-tools && \
-     yum install -y --enablerepo=nginx \
+     yum install -y --enablerepo=unit \
+        # nginx
         nginx && \
      yum install -y --enablerepo=remi-php54 \
         # php
@@ -40,7 +42,8 @@ RUN  yum install -y \
      yum clean all
 
 # nginx
-RUN rm /etc/nginx/conf.d/default.conf
+RUN rm -rf /etc/nginx/conf.d/*
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/vhost-phpfpm.conf /etc/nginx/conf.d/vhost-phpfpm.conf
 
 # php
