@@ -5,7 +5,8 @@
 - タイムゾーン
 - インストール
   - 運用ツール
-  - NginxUnitインストール
+  - nginxインストール
+  - php-fpmインストール
   - PHP関連ツール
   - アプリの設定登録
 - yumキャッシュクリア
@@ -13,5 +14,5 @@
 
 # 起動方法
 - $ docker pull oshou/docker-centos7-phpfpm54:latest
-- $ docker run --name phpfpm -dit -p 9000:9000 --privileged oshou/docker-centos7-phpfpm54 /sbin/init
+- $ docker run --name phpfpm -dit -p 80:80 -p 9000:9000 --privileged oshou/docker-centos7-phpfpm54 /sbin/init
 - $ docker exec -it phpfpm /bin/bash

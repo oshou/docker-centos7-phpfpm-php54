@@ -40,6 +40,7 @@ RUN  yum install -y \
      yum clean all
 
 # nginx
+RUN rm /etc/nginx/conf.d/default.conf
 COPY ./conf/vhost-phpfpm.conf /etc/nginx/conf.d/vhost-phpfpm.conf
 
 # php
