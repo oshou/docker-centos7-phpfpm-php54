@@ -1,5 +1,6 @@
 #!/bin/bash
-/usr/bin/systemctl start php-fpm
+/usr/sbin/nginx
+/usr/sbin/php-fpm
 
 while true
 do

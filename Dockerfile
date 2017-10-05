@@ -64,4 +64,4 @@ RUN groupadd --gid 1000 www-data && \
 EXPOSE 9000
 
 # startup
-CMD /usr/local/startup.sh
+ENTRYPOINT /usr/local/startup.sh

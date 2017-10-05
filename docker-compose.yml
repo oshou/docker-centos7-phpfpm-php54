@@ -8,8 +8,7 @@ services:
       - ./logs/unitd:/var/log/unitd.log
   unit:
     container_name: 'unit'
-    #image: oshou/docker-centos7-phpfpm-php54:latest
-    build: .
+    image: oshou/docker-centos7-phpfpm-php54:latest
     privileged: true
     volumes_from:
       - data-volume
