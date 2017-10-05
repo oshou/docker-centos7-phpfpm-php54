@@ -8,18 +8,19 @@ RUN sed -i -e "s/LANG=\"en_US.UTF-8\"/LANG=\"ja_JP.UTF-8\"/g" /etc/locale.conf \
 # system update
 RUN  yum -y update
 
+
 # install repository & packages
 
-     # [repo] unit
-COPY conf/unit.repo /etc/yum.repos.d/unit.repo
      # [repo] nginx
 COPY conf/nginx.repo /etc/yum.repos.d/nginx.repo
+     # [repo] unit
+COPY conf/unit.repo /etc/yum.repos.d/unit.repo
      # [repo] epel
 RUN  yum install -y epel-release \
-     # [repo] city-fan
-     && rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/city-fan.org-release-1-13.rhel7.noarch.rpm \
      # [repo] remi
      && rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+     # [repo] city-fan
+     && rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/city-fan.org-release-1-13.rhel7.noarch.rpm \
      # tools
      && yum install -y \
         less \
@@ -48,7 +49,7 @@ RUN  yum install -y epel-release \
 # nginx
 RUN rm -rf /etc/nginx/conf.d/*
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
-COPY ./conf/vhost-phpfpm.conf /etc/nginx/conf.d/vhost-phpfpm.conf
+COPY ./conf/backend-phpfpm.conf /etc/nginx/conf.d/backend-phpfpm.conf
 
 # php
 COPY ./conf/php.ini /etc/php.ini

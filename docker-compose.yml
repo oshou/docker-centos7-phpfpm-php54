@@ -5,7 +5,7 @@ services:
     image: busybox
     volumes: 
       - ./data/www:/var/www
-      - ./logs/unitd:/var/log/unitd.log
+      - ./logs/php-fpm:/var/log/php-fpm
   phpfpm54:
     container_name: 'phpfpm54'
     image: oshou/docker-centos7-phpfpm-php54:latest
