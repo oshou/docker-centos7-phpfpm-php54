@@ -13,7 +13,5 @@
 - アプリ用ポートの開放
 
 # 起動方法
-- $ docker pull oshou/docker-centos7-phpfpm54:latest
-- $ docker run --name phpfpm1004e -dit -p 80:80 -p 9000:9000 --privileged phpfpm1004e
-- $ docker run --name phpfpm -dit -p 80:80 -p 9000:9000 --privileged oshou/docker-centos7-phpfpm54 /sbin/init
+- $ docker run --name phpfpm -dit -p 80:80 -p 9000:9000 --privileged oshou/docker-centos7-phpfpm54
 - $ docker exec -it phpfpm /bin/bash

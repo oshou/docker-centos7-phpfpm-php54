@@ -6,8 +6,8 @@ services:
     volumes: 
       - ./data/www:/var/www
       - ./logs/unitd:/var/log/unitd.log
-  unit:
-    container_name: 'unit'
+  phpfpm54:
+    container_name: 'phpfpm54'
     image: oshou/docker-centos7-phpfpm-php54:latest
     privileged: true
     volumes_from:
