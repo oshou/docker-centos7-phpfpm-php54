@@ -9,11 +9,12 @@ RUN sed -i -e "s/LANG=\"en_US.UTF-8\"/LANG=\"ja_JP.UTF-8\"/g" /etc/locale.conf \
 RUN  yum -y update
 
 # install repository & packages
-# [repo] unit
+
+     # [repo] unit
 COPY conf/unit.repo /etc/yum.repos.d/unit.repo
-# [repo] nginx
+     # [repo] nginx
 COPY conf/nginx.repo /etc/yum.repos.d/nginx.repo
-# [repo] epel
+     # [repo] epel
 RUN  yum install -y epel-release \
      # [repo] city-fan
      && rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/city-fan.org-release-1-13.rhel7.noarch.rpm \
@@ -53,7 +54,7 @@ COPY ./conf/vhost-phpfpm.conf /etc/nginx/conf.d/vhost-phpfpm.conf
 COPY ./conf/php.ini /etc/php.ini
 COPY ./conf/php-fpm.conf /etc/php-fpm.conf
 COPY ./conf/www.conf /etc/php-fpm.d/www.conf
-COPY ./conf/index.php /var/www/html/index.php
+COPY ./conf/info.php /var/www/html/info.php
 COPY ./conf/startup.sh /usr/local/startup.sh
 RUN chmod 755 /usr/local/startup.sh
 
