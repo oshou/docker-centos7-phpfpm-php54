@@ -15,6 +15,7 @@
 - スタートアップスクリプト実行(NGINX, php-fpm起動)
 
 ## 起動方法
+
 ```
 $ docker run --name phpfpm -dit -p 80:80 -p 9000:9000 --privileged oshou/docker-centos7-phpfpm-php54:latest
 $ docker exec -it phpfpm /bin/bash
